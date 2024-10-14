@@ -13,9 +13,10 @@
     border: none;
     border-radius: 20px;
     outline: none;
+    background-color:  #f3eeee10;;
 }
 .input_txt:hover{
-    background-color: rgba(225, 223, 221, 0.502);
+    background-color: #fff;
     margin-right: 2px black;
 }
 .sicondiv{
@@ -32,4 +33,11 @@
     height: 30px;
     width: 100%;
     
+}
+.searchicon:hover{
+    height: 35px;
+}
+.sicondiv:hover{
+    background-color:  rgb(229, 36, 36);
+
 }

@@ -7,6 +7,7 @@ const Search_bar =()=>{
     const [location,setlocation]=useState('');
 
     const handleSearch= () => {
+        //api fetch code
         console.log(`searching for ${location}`)
     }
 

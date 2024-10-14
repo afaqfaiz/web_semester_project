@@ -10,9 +10,8 @@ body {
     justify-content: space-between;
     padding: 0.5rem;
     
-    background-color: #ffff;
-    color: inherit;
-    font-weight: 500;
+    color: #484848;
+    font-weight: 600;
     font-size:1.5rem ;
 }
 
@@ -32,12 +31,13 @@ body {
 
 .nav a {
     text-decoration: none;
-    padding: 8px;
+    padding: 4px 12px;
     color: inherit;
 }
 .nav a:hover{
     box-shadow: 0 2px 5px rgba(152, 147, 147, 0.274);
     border-radius: 30px;
+    background-color: #98969656;
 }
 
 /* Hamburger and user icon */

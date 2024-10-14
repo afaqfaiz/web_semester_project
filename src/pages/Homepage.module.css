@@ -1,3 +1,6 @@
+body{
+    background-color: #e8e3e382;
+}
 .center_container{
     padding:10px;
     display: flex;               /* Enable flexbox */
