@@ -1,0 +1,35 @@
+.searchbar{
+    width: 30%;
+    height:40px;
+    border:  2px solid rgba(187, 181, 181, 0.616);
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    align-self: center;
+}
+.input_txt{
+    width: 68%;
+    height: 38px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+}
+.input_txt:hover{
+    background-color: rgba(225, 223, 221, 0.502);
+    margin-right: 2px black;
+}
+.sicondiv{
+    cursor: pointer;
+    height: 39px;
+    width: 30%;
+    background-color: rgb(237, 84, 84);
+    border-radius: 20px;
+}
+.searchicon{
+    padding-top: 4px;
+    right: 10;
+    color: #fff;
+    height: 30px;
+    width: 100%;
+    
+}
