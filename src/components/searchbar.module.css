@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+body {
+    font-family: 'Nunito', sans-serif; /* or 'Poppins' */
+  }
+  
 .searchbar{
     width: 30%;
     height:40px;
     border:  2px solid rgba(187, 181, 181, 0.616);
     display: flex;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 40px;
     align-self: center;
 }
 .input_txt{
-    width: 68%;
+    width: 69.99%;
     height: 38px;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
     outline: none;
     background-color:  #f3eeee10;;
 }
