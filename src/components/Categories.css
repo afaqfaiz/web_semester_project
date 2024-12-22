@@ -5,18 +5,23 @@
     overflow-x: auto;
     gap: 10px;
     padding: 10px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
 }
 
 .category-button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 16px;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 14px;
+    /* font-size: 14px; */
     transition: color 0.3s, background-color 0.3s;
+    font-size: 24px;
+    margin-bottom: 5px;
+    
 }
 
 .category-button.active {
@@ -26,6 +31,8 @@
 }
 
 .category-icon {
-    font-size: 24px;
-    margin-bottom: 5px;
+    font-size: 100%;
+}
+.category-label{
+    font-size: 70%;
 }

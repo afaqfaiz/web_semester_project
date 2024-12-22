@@ -9,7 +9,7 @@ const Navbar = () => {
     const toggleMenu = () => {
         setMenuOpen(!isMenuOpen);
     };
-
+     
     return (
         <header className={styles.Navbar}>
             <div className={styles.logo}>AIR</div>

@@ -1,0 +1,6 @@
+.listings-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow wrapping to the next line */
+    gap: 20px; /* Space between the cards */
+    justify-content: center; /* Center the cards */
+}

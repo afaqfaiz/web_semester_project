@@ -2,7 +2,9 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Search_bar from "../components/searchbar";
 import Categories from "../components/Categories";
-import styles from "./Homepage.module.css"
+import styles from "./Homepage.module.css";
+import Listing from "../components/Listing";
+//import Listingcard from "../components/Listingcard";
 
 
 const Homepage = () => {
@@ -15,6 +17,7 @@ const Homepage = () => {
             <Search_bar />
           </div>
           <Categories />
+            <Listing/>
       </div>
     </>
 
