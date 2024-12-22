@@ -3,10 +3,12 @@ import styles from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import LoginModal from "./Login";
+import SignupModal from "./signup";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false); // Fix: Add this state
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -16,8 +18,12 @@ const Navbar = () => {
     setShowLogin(!showLogin);
   };
 
+  const toggleSignupModal = () => {
+    setShowSignup(!showSignup);
+  };
+
   return (
-    <div className={`home-page ${showLogin ? "blur" : ""}`}>
+    <div className={`home-page ${showLogin || showSignup ? "blur" : ""}`}>
       <header className={styles.Navbar}>
         <div className={styles.logo}>AIR</div>
         <nav className={styles.nav}>
@@ -43,12 +49,16 @@ const Navbar = () => {
               <button className={styles.login} onClick={toggleLoginModal}>
                 Log In
               </button>
-              <button className={styles.signup}>Sign Up</button>
+              <button className={styles.signup} onClick={toggleSignupModal}>
+                Sign Up
+              </button>
             </div>
           </div>
         )}
       </header>
+      
       {showLogin && <LoginModal onClose={toggleLoginModal} />}
+      {showSignup && <SignupModal onClose={toggleSignupModal} />}
     </div>
   );
 };
