@@ -32,8 +32,8 @@ const Navbar = () => {
           <a href="#">Online Experiences</a>
         </nav>
 
-        <div className={styles.navicon} onClick={toggleMenu}>
-          <div className={styles.hamicon}>
+        <div className={styles.navicon} >
+          <div className={styles.hamicon} onClick={toggleMenu}>
             <span className={styles.bar}></span>
             <span className={styles.bar}></span>
             <span className={styles.bar}></span>
