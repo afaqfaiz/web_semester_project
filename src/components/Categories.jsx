@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Categories.css';
+import '../assets/css/Categories.css';
 
 const categoriesdata = [
     { name: 'Beachfront', icon: '🏖️' },

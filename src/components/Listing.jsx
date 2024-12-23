@@ -1,6 +1,6 @@
 import React from "react";
 import ListingCards from  "./Listingcard";
-import './listing.css'
+import '../assets/css/listing.css'
 import hotel from '../assets/hotel.jpg';
 import { useState } from "react";
 import BookingPage from "../pages/booking";

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from './Navbar.module.css';
+import styles from '../assets/css/Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import LoginModal from "./Login";

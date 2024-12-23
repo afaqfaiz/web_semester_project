@@ -1,5 +1,5 @@
 import React from "react";
-import './listingcards.css'
+import '../assets/css/listingcards.css'
 
 const ListingCards=({image,title,location,propertyType,guests,bedrooms,bathrooms,price,rating, onBookClick})=>{
 

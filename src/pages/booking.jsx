@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./booking.css";
+import "../assets/css/booking.css";
 
 const BookingPage = ({ property, onClose }) => {
   const [checkIn, setCheckIn] = useState("");
