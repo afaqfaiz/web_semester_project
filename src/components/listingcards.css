@@ -37,3 +37,31 @@
     font-size: 0.9em;
     margin: 2px 0;
 }
+
+/* booking button */
+.book-button {
+    background-color: #ff385c; /* Airbnb's pinkish-red */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    margin: 12px 20px;;
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-button:hover {
+    background-color: #e33450;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.book-button:active {
+    background-color: #cc2a3f;
+    transform: scale(0.98);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}

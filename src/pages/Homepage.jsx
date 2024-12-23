@@ -4,6 +4,7 @@ import Search_bar from "../components/searchbar";
 import Categories from "../components/Categories";
 import styles from "./Homepage.module.css";
 import Listing from "../components/Listing";
+import BookingPage from "./booking";
 import { useState } from "react";
 //import Listingcard from "../components/Listingcard";
 
@@ -21,6 +22,7 @@ const Homepage = () => {
           </div>
           <Categories />
             <Listing location={location}/>
+            {/* <BookingPage /> */}
       </div>
     </>
 

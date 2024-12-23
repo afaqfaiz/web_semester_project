@@ -1,7 +1,7 @@
 import React from "react";
 import './listingcards.css'
 
-const ListingCards=({image,title,location,propertyType,guests,bedrooms,bathrooms,price,rating})=>{
+const ListingCards=({image,title,location,propertyType,guests,bedrooms,bathrooms,price,rating, onBookClick})=>{
 
 
     return(
@@ -16,6 +16,7 @@ const ListingCards=({image,title,location,propertyType,guests,bedrooms,bathrooms
                 <p className="listing-rating">⭐{rating}</p>
 
             </div>
+            <button className="book-button" onClick={onBookClick}>Book</button> 
         </div>
 
     )

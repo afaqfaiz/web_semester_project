@@ -1,7 +1,9 @@
 import React from "react";
 import ListingCards from  "./Listingcard";
 import './listing.css'
-import hotel from '../assets/hotel.jpg'
+import hotel from '../assets/hotel.jpg';
+import { useState } from "react";
+import BookingPage from "../pages/booking";
 const listingsData = [
     {
         id: 1,
@@ -83,12 +85,22 @@ const listingsData = [
     },
     // Add more listings as needed
 ];
-
+//bookingpage
 
 const Listing=({location})=>{
     console.log("in listing", location);
 
+    const [selectedListing, setSelectedListing] = useState(null);
+
+    const handleBookClick = (listing) => {
+        setSelectedListing(listing); // Set the selected listing
+    };
+
+    const closeBookingPage = () => {
+        setSelectedListing(null); // Close the BookingPage
+    };
     return (
+        <div>
         <div className="listings-container">
             {listingsData.map((listing) =>(
             <ListingCards 
@@ -102,10 +114,19 @@ const Listing=({location})=>{
                 bathrooms={listing.bathrooms}
                 price={listing.price}
                 rating={listing.rating}
+                onBookClick={() => handleBookClick(listing)}
                 />
 
             ))}
 
+        </div>
+            {/* Conditionally render BookingPage */}
+            {selectedListing && (
+                <BookingPage
+                    property={selectedListing}
+                    onClose={closeBookingPage}
+                />
+            )}
         </div>
 
     )
