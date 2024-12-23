@@ -16,34 +16,30 @@ const SignupModal = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData.name,formData.email)
 
     try {
-      // Simulate an API call
-      const response = await fakeApiSignup(formData);
+      // API call to register user
+      const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (response.success) {
+      const data = await response.json();
+
+      if (response.ok) {
         setError("");
         onClose(); // Close the modal on successful signup
         alert("Signup successful!");
       } else {
-        setError(response.message || "Signup failed");
+        setError(data.message || "Signup failed");
       }
     } catch (err) {
       setError("Failed to connect. Please try again.");
     }
-  };
-
-  // Pseudo API for signup
-  const fakeApiSignup = async ({ name, email, password }) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (email !== "test@example.com") {
-          resolve({ success: true });
-        } else {
-          resolve({ success: false, message: "Email already registered" });
-        }
-      }, 1000); // Simulate a 1-second API delay
-    });
   };
 
   return (
