@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/login.css";
 
-const LoginModal = ({ onClose }) => {
+const LoginPage = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -19,7 +19,6 @@ const LoginModal = ({ onClose }) => {
 
       if (response.success) {
         setError("");
-        onClose(); // Close the modal on successful login
         alert("Login successful!");
       } else {
         setError(response.message || "Invalid credentials");
@@ -43,43 +42,40 @@ const LoginModal = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="close-button" onClick={onClose} aria-label="Close">
-          &times;
+    <div className="login-page">
+      <h2 className="main-heading">Login to Your Account</h2>
+      <form onSubmit={handleSubmit}>
+        <label className="form-label" >
+          Email:
+          <input
+            className="email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+          />
+        </label>
+        <label className="form-label">
+          Password:
+          <input
+            className="password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            required
+          />
+        </label>
+        {error && <p className="error">{error}</p>}
+        <button type="submit" className="submit-button">
+          Login
         </button>
-        <h2>Login to Your Account</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
-          </label>
-          {error && <p className="error">{error}</p>}
-          <button type="submit" className="submit-button">
-            Login
-          </button>
-        </form>
-      </div>
+      </form>
     </div>
   );
 };
 
-export default LoginModal;
+export default LoginPage;

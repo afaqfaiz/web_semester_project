@@ -1,29 +1,31 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from '../assets/css/Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import LoginModal from "./Login";
-import SignupModal from "./signup";
+
+
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
+
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  const toggleLoginModal = () => {
-    setShowLogin(!showLogin);
+  const navigateToLogin = () => {
+  
+    navigate("/login");
   };
 
-  const toggleSignupModal = () => {
-    setShowSignup(!showSignup);
-  };
+  const navigateToSignup = () => {
 
+    navigate("/signup");
+  };
   return (
-    <div className={`home-page ${showLogin || showSignup ? "blur" : ""}`}>
+    <div className={styles.homepage }>
       <header className={styles.Navbar}>
         <div className={styles.logo}>AIR</div>
         <nav className={styles.nav}>
@@ -46,19 +48,16 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className={styles.dropdownMenu}>
             <div className={styles.dropdownContent}>
-              <button className={styles.login} onClick={toggleLoginModal}>
+              <button className={styles.login} onClick={navigateToLogin}>
                 Log In
               </button>
-              <button className={styles.signup} onClick={toggleSignupModal}>
+              <button className={styles.signup} onClick={navigateToSignup}>
                 Sign Up
               </button>
             </div>
           </div>
         )}
       </header>
-      
-      {showLogin && <LoginModal onClose={toggleLoginModal} />}
-      {showSignup && <SignupModal onClose={toggleSignupModal} />}
     </div>
   );
 };

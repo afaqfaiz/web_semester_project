@@ -1,128 +1,71 @@
-/* Overlay to blur the background */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
-}
+/* login.css */
 
-/* Modal content styling */
-.modal-content {
-  background: linear-gradient(135deg, #ffffff, #f7f9fc);
-  border-radius: 12px;
+.login-page {
+  background: #ffffff;
   padding: 30px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  position: relative;
-  animation: slideIn 0.4s ease-out;
-}
-
-/* Close button */
-.close-button {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main-heading {
+  margin-bottom: 20px;
+  color: #333;
   font-size: 24px;
-  cursor: pointer;
-  color: #555;
-  transition: color 0.3s ease;
 }
 
-.close-button:hover {
-  color: #ff5c5c;
-}
-
-/* Form styles */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
 }
 
-form label {
-  font-size: 14px;
-  color: #333;
+.form-label {
+  margin-bottom: 15px;
   text-align: left;
-}
-
-form input {
-  padding: 10px 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
   font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #555;
 }
 
-form input:focus {
-  border-color: #00aaff;
-  box-shadow: 0 0 6px rgba(0, 170, 255, 0.5);
+.email, .password {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.email:focus, .password:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+.error {
+  color: #d9534f;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .submit-button {
-  background: #00aaff;
-  color: white;
-  padding: 12px;
-  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-  background: #007acc;
-  transform: translateY(-3px);
-}
-
-/* Add animation for modal appearance */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* Responsive design */
-@media (max-width: 480px) {
-  .modal-content {
-    width: 95%;
-    padding: 20px;
-  }
-
-  form input,
-  .submit-button {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .close-button {
-    font-size: 20px;
-  }
+  background-color: #0056b3;
 }

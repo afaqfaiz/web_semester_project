@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../assets/css/signup.css";
+import { useNavigate } from "react-router-dom";
 
-const SignupModal = ({ onClose }) => {
+const SignupPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,10 +18,8 @@ const SignupModal = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData.name,formData.email)
 
     try {
-      // API call to register user
       const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
@@ -32,8 +32,8 @@ const SignupModal = ({ onClose }) => {
 
       if (response.ok) {
         setError("");
-        onClose(); // Close the modal on successful signup
         alert("Signup successful!");
+        navigate('/login')
       } else {
         setError(data.message || "Signup failed");
       }
@@ -43,54 +43,52 @@ const SignupModal = ({ onClose }) => {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <button className="close-button" onClick={onClose} aria-label="Close">
-          &times;
+    <div className="signup-page">
+      <h2 className="main-heading">Create Your Account</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            className="name"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your full name"
+            required
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            className="email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            className="password"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Create a password"
+            required
+          />
+        </label>
+        {error && <p className="error">{error}</p>}
+        <button type="submit" className="submit-button">
+          Sign Up
         </button>
-        <h2>Create Your Account</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your full name"
-              required
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Create a password"
-              required
-            />
-          </label>
-          {error && <p className="error">{error}</p>}
-          <button type="submit" className="submit-button">
-            Sign Up
-          </button>
-        </form>
-      </div>
+      </form>
     </div>
   );
 };
 
-export default SignupModal;
+export default SignupPage;
