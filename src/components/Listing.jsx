@@ -4,6 +4,7 @@ import '../assets/css/listing.css'
 import hotel from '../assets/hotel.jpg';
 import { useState } from "react";
 import BookingPage from "../pages/booking";
+import { Navigate, useNavigate } from "react-router-dom";
 const listingsData = [
     {
         id: 1,
@@ -85,9 +86,11 @@ const listingsData = [
     },
     // Add more listings as needed
 ];
-//bookingpage
+
 
 const Listing=({location,activeCategory})=>{
+
+    const navigate=useNavigate();
     console.log("in listing", location);
     console.log("in listig: category",activeCategory);
 
@@ -95,11 +98,13 @@ const Listing=({location,activeCategory})=>{
 
     const handleBookClick = (listing) => {
         setSelectedListing(listing); // Set the selected listing
+        navigate('/booking', { state: { listing } });
+
     };
 
-    const closeBookingPage = () => {
-        setSelectedListing(null); // Close the BookingPage
-    };
+    // const closeBookingPage = () => {
+    //     setSelectedListing(null); // Close the BookingPage
+    // };
     return (
         <div>
         <div className="listings-container">
@@ -121,13 +126,6 @@ const Listing=({location,activeCategory})=>{
             ))}
 
         </div>
-            {/* Conditionally render BookingPage */}
-            {selectedListing && (
-                <BookingPage
-                    property={selectedListing}
-                    onClose={closeBookingPage}
-                />
-            )}
         </div>
 
     )

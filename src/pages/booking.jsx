@@ -1,18 +1,25 @@
 import React, { useState } from "react";
 import "../assets/css/booking.css";
+import { useNavigate,useLocation } from "react-router-dom";
 
-const BookingPage = ({ property, onClose }) => {
+const BookingPage = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [error, setError] = useState("");
   const [bookingSuccess, setBookingSuccess] = useState(false);
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  
+  const {listing}= location.state || {};
+  if (!listing) {
+    return <p>No listing data available.</p>;
+  }
   const calculateTotalPrice = () => {
     if (checkIn && checkOut) {
       const checkInDate = new Date(checkIn);
       const checkOutDate = new Date(checkOut);
       const nights = (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24);
-      return nights > 0 ? nights * property.price : 0;
+      return nights > 0 ? nights * listing.price : 0;
     }
     return 0;
   };
@@ -30,7 +37,7 @@ const BookingPage = ({ property, onClose }) => {
 
     // Dummy API simulation
     const bookingDetails = {
-      propertyId: property.id,
+      listingId: listing.id,
       checkIn,
       checkOut,
       totalPrice: calculateTotalPrice(),
@@ -41,14 +48,13 @@ const BookingPage = ({ property, onClose }) => {
     setBookingSuccess(true);
     setTimeout(() => {
       setBookingSuccess(false);
-      onClose(); // Close the popup on success
     }, 2000);
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-content">
-        <button className="close-button" onClick={onClose}>
+        <button className="close-button" onClick={() => navigate(-1)}>
           &times;
         </button>
         <h2>Book Your Stay</h2>
@@ -58,11 +64,11 @@ const BookingPage = ({ property, onClose }) => {
         ) : (
           <>
             <div className="property-summary">
-              <h3>{property.title}</h3>
-              <p>{property.location}</p>
-              <p>{property.propertyType}</p>
-              <p>{property.guests} guests · {property.bedrooms} bedrooms · {property.bathrooms} bathrooms</p>
-              <p>${property.price} / night</p>
+              <h3>{listing.title}</h3>
+              <p>{listing.location}</p>
+              <p>{listing.propertyType}</p>
+              <p>{listing.guests} guests · {listing.bedrooms} bedrooms · {listing.bathrooms} bathrooms</p>
+              <p>${listing.price} / night</p>
             </div>
 
             <form>

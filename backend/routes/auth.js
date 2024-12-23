@@ -1,13 +1,16 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../models/Users');
 const router = express.Router();
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 // Register a new user
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
 
-  console.log("username",name)
   username=name;
 
   
@@ -34,4 +37,26 @@ router.post('/register', async (req, res) => {
   }
 });
 
+
+router.post('/login', async(req,res)=>{
+  const {email,password}=req.body;
+  try{
+    const user=await User.findOne({email});
+    if(!user){
+      return res.status(400).send("user don't exist....");
+    }
+    const isPasswordCorect= await bcrypt.compare(password,user.password)
+    if(!isPasswordCorect){
+       return res.status(400).send("password is incorrect");
+    }
+    const token = jwt.sign({id: user._id},process.env.JWT_SECRET,{expiresIn: "10m"})
+
+     return res.status(200).json({user,token})
+  }
+  catch(error)
+  {
+    console.log("error is =>", error);
+    res.status(500).send("some error occured: ")
+  }
+});
 module.exports = router;

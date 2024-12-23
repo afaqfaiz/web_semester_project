@@ -1,12 +1,16 @@
 import { createRoot } from 'react-dom/client'
-import React from 'react'
+import React, { StrictMode } from 'react'
 import Navbar from './components/Navbar.jsx'
-import Homepage from './pages/Homepage.jsx'
+import App from './App.jsx'
 import './assets/fonts.module.css'
-
+import {BrowserRouter} from 'react-router-dom'
 
 
 
 createRoot(document.getElementById('root')).render(
-  <Homepage />
+  <StrictMode>
+    <BrowserRouter>
+       <App />
+    </BrowserRouter> 
+  </StrictMode>
 )
