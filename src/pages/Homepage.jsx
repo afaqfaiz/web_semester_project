@@ -11,6 +11,7 @@ import { useState } from "react";
 
 const Homepage = () => {
 
+  const[activeCategory,setsentcatigory]=useState('');
   const [location,setLocation] = useState('');
   console.log("in home",location);
   return (
@@ -20,8 +21,8 @@ const Homepage = () => {
           <div className={styles.center_container}>
             <Search_bar setLocation={setLocation} />
           </div>
-          <Categories />
-            <Listing location={location}/>
+          <Categories setsentcatigory={setsentcatigory} />
+            <Listing location={location} activeCategory={activeCategory}/>
             {/* <BookingPage /> */}
       </div>
     </>

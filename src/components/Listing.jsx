@@ -87,8 +87,9 @@ const listingsData = [
 ];
 //bookingpage
 
-const Listing=({location})=>{
+const Listing=({location,activeCategory})=>{
     console.log("in listing", location);
+    console.log("in listig: category",activeCategory);
 
     const [selectedListing, setSelectedListing] = useState(null);
 
