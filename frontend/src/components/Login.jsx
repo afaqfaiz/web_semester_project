@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "../assets/css/login.css";
-
+import { useAuthStore } from "../store/useAuthStore";
+import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
+  const {setuser}=useAuthStore();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
@@ -12,33 +15,32 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
 
     try {
-      // Simulate an API call
-      const response = await fakeApiLogin(formData);
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (response.success) {
+      const data = await response.json();
+
+      if (response.ok) {
         setError("");
+        setuser(data.user);
+        localStorage.setItem("Token",data.token);
         alert("Login successful!");
+        console.log("token",data.token)
+        navigate('/')
       } else {
-        setError(response.message || "Invalid credentials");
+        setError(data.message || "Login failed");
       }
     } catch (err) {
       setError("Failed to connect. Please try again.");
     }
-  };
-
-  // Pseudo API for login
-  const fakeApiLogin = async ({ email, password }) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        if (email === "test@example.com" && password === "password123") {
-          resolve({ success: true });
-        } else {
-          resolve({ success: false, message: "Invalid email or password" });
-        }
-      }, 1000); // Simulate a 1-second API delay
-    });
   };
 
   return (

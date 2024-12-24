@@ -18,8 +18,8 @@ const App = () => {
             <Route path='/' element={<Homepage/>}/>
             <Route path='/signup' element={<SignupModal/>}/>
             <Route path='/login' element={<LoginModal/>}/>
-            <Route path='/booking' element={<BookingPage/>}></Route>
-            {/* <Route path='/booking' element={user ? <BookingPage/>: <Navigate to='/login'/>}/> */}
+            {/* <Route path='/booking' element={<BookingPage/>}></Route> */}
+            <Route path='/booking' element={user ? <BookingPage/>: <Navigate to='/login'/>}/>
         </Routes>
     </div>
   )
