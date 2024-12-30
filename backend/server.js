@@ -5,6 +5,7 @@ const connectDB = require('./db'); // Import your DB connection logic
 const authRoutes = require('./routes/auth');
 const adminauth =require('./routes/authRoutes');
 const roomRoutes = require('./routes/roomRoutes');
+const bookingRoutes = require('./routes/bookingRoutes')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -18,15 +19,15 @@ app.get('/', (req, res) => {
 
 app.use(express.json());
 
-// User registration route
+
 app.use('/api/auth', authRoutes);
 
 app.use('/api/admin/auth',adminauth);
 
-app.use('/uploads', express.static('uploads')); // Serve uploaded images
+app.use('/uploads', express.static('uploads')); 
 
-// Routes
 app.use('/api/rooms', roomRoutes);
+app.use('/api/booking', bookingRoutes);
 
 // Start server
 app.listen(PORT, () => {
