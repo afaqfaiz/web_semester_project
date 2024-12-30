@@ -45,4 +45,23 @@ router.post('/book-room', async (req, res) => {
   }
 });
 
+// Get all bookings (Admin only)
+router.get('/all-bookings', async (req, res) => {
+  try {
+    // Fetch all bookings with populated user and room details
+    const bookings = await Booking.find()
+      .populate('userId', 'username email') // Populate user details
+      .populate('roomId', 'title location price'); // Populate room details
+
+    if (!bookings.length) {
+      return res.status(404).json({ message: 'No bookings found.' });
+    }
+
+    return res.status(200).json({ bookings });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Server error, try again later.' });
+  }
+});
+
 module.exports = router;
