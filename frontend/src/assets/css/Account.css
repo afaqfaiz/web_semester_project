@@ -1,0 +1,78 @@
+.account-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .sticky-navbar {
+    position: sticky;
+    top: 0;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sticky-navbar h1 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .sticky-navbar p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin-top: 20px;
+  }
+  
+  .bookings-table th,
+  .bookings-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .bookings-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 14px;
+  }
+  
+  .bookings-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .bookings-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .error {
+    color: red;
+  }
+  

@@ -6,6 +6,7 @@ import Homepage from './pages/Homepage.jsx'
 import SignupModal from './components/signup.jsx'
 import LoginModal from './components/Login.jsx'
 import BookingPage from './pages/booking.jsx'
+import Account from './pages/Accont.jsx';
 import {useAuthStore} from './store/useAuthStore.js'  
 
 
@@ -20,6 +21,8 @@ const App = () => {
             <Route path='/login' element={<LoginModal/>}/>
             {/* <Route path='/booking' element={<BookingPage/>}></Route> */}
             <Route path='/booking' element={user ? <BookingPage/>: <Navigate to='/login'/>}/>
+
+            <Route path="/account" element={user? <Account />  : <LoginModal/>} />
         </Routes>
     </div>
   )
