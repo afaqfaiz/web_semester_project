@@ -1,10 +1,26 @@
 const express = require('express');
 const Room = require('../models/Rooms');
+const multer = require('multer');
+const path = require('path');
 const router = express.Router();
 
-router.post('/add-room', async (req, res) => {
+// Set up storage for images
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Save images in the 'uploads' folder
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Use unique names for images
+  },
+});
+
+const upload = multer({ storage });
+
+// Add a room with image upload
+router.post('/add-room', upload.single('image'), async (req, res) => {
   try {
-    const room = new Room(req.body);
+    const roomData = { ...req.body, image: `/uploads/${req.file.filename}` };
+    const room = new Room(roomData);
     await room.save();
     res.status(201).json({ message: 'Room added successfully!' });
   } catch (error) {
@@ -12,6 +28,7 @@ router.post('/add-room', async (req, res) => {
   }
 });
 
+// Get all rooms
 router.get('/list-rooms', async (req, res) => {
   try {
     const rooms = await Room.find();
