@@ -1,95 +1,59 @@
-/* AddRoom.css */
-
-/* Container for the AddRoom component */
 .add-room-container {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Title of the Add Room form */
-  .add-room-container h2 {
-    text-align: center;
-    color: #008cba;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  /* The form container */
-  .add-room-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Style for individual form fields */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .form-group label {
-    font-size: 1rem;
-    color: #333;
-    font-weight: 600;
-  }
-  
-  .form-group input {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    outline: none;
-    transition: border 0.3s ease;
-  }
-  
-  .form-group input:focus {
-    border: 1px solid #008cba;
-  }
-  
-  /* Style for the image preview */
-  .image-preview {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Submit button style */
-  .submit-button {
-    padding: 12px 24px;
-    background-color: #008cba;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-  }
-  
-  .submit-button:hover {
-    background-color: #005f73;
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .add-room-container {
-      padding: 15px;
-    }
-  
-    .add-room-form {
-      gap: 10px;
-    }
-  
-    .submit-button {
-      width: 100%;
-    }
-  }
-  
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.add-room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.image-preview {
+  margin-top: 10px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

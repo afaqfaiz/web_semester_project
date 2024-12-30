@@ -19,7 +19,7 @@ function App() {
         <Route path="/dashboard" element={admin ?<Dashboard />: <Login />} />
         <Route path="/bookings" element={admin?<Bookings />:<Login /> } />
         <Route path="/rooms" element={admin?<Rooms />:<Login/>} />
-        <Route path="/add-room" element={admin?<AddRoom />: <Login/>} />
+        <Route path="/add-room" element={admin?<AddRoom /> : <Login/>} />
       </Routes>
     </Router>
   );
