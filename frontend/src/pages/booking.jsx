@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "../assets/css/booking.css";
 import { useNavigate,useLocation } from "react-router-dom";
+import {useAuthStore} from '../store/useAuthStore' 
+import axios from 'axios';
 
 const BookingPage = () => {
+  const user =useAuthStore();
+  const userid= user.user._id;
+  console.log(userid);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [error, setError] = useState("");
@@ -24,6 +29,32 @@ const BookingPage = () => {
     return 0;
   };
 
+  // const handleBooking = async () => {
+  //   if (!checkIn || !checkOut) {
+  //     setError("Please select valid check-in and check-out dates.");
+  //     return;
+  //   }
+  //   if (new Date(checkIn) >= new Date(checkOut)) {
+  //     setError("Check-out date must be after the check-in date.");
+  //     return;
+  //   }
+  //   setError("");
+
+  //   // Dummy API simulation
+  //   const bookingDetails = {
+  //     listingId: listing.id,
+  //     checkIn,
+  //     checkOut,
+  //     totalPrice: calculateTotalPrice(),
+  //   };
+
+  //   console.log("Booking Details Submitted:", bookingDetails);
+  //   // Simulate API success
+  //   setBookingSuccess(true);
+  //   setTimeout(() => {
+  //     setBookingSuccess(false);
+  //   }, 2000);
+  // };
   const handleBooking = async () => {
     if (!checkIn || !checkOut) {
       setError("Please select valid check-in and check-out dates.");
@@ -34,22 +65,31 @@ const BookingPage = () => {
       return;
     }
     setError("");
-
-    // Dummy API simulation
+  
+    
     const bookingDetails = {
-      listingId: listing.id,
+      userId: userid, 
+      roomId: listing._id, 
       checkIn,
       checkOut,
       totalPrice: calculateTotalPrice(),
     };
-
-    console.log("Booking Details Submitted:", bookingDetails);
-    // Simulate API success
-    setBookingSuccess(true);
-    setTimeout(() => {
-      setBookingSuccess(false);
-    }, 2000);
+  
+    try {
+      const response = await axios.post('http://localhost:3000/api/booking/book-room', bookingDetails);
+      if (response.data.message === 'Booking successful!') {
+        setBookingSuccess(true);
+        setTimeout(() => {
+          setBookingSuccess(false);
+          navigate('/'); // Navigate back to the home page or another route
+        }, 2000);
+      }
+    } catch (error) {
+      setError('There was an error making the booking. Please try again.');
+      console.error(error);
+    }
   };
+  
 
   return (
     <div className="modal-overlay">
